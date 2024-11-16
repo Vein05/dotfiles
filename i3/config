@@ -164,7 +164,11 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 #	bindsym Return mode "default"
 #        bindsym Escape mode "default"
 #}
-
+#Rezise the focus window by arrows
+bindsym $mod+Ctrl+Shift+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Left resize grow width 1 px or 1 ppt
 #bindsym $mod+r mode "resize"
 
 ######################################
@@ -360,6 +364,7 @@ for_window [class=TelegramDesktop] focus
 # install picom package (yay -S picom)
 # start using default config 
 #exec_always --no-startup-id picom -b
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 #
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
@@ -400,8 +405,9 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
-# exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /home/vein/Pictures/wallpapers/wallhaven-5g8xj7.jpg
+# exec --set-zoom-fill --random /home/vein/Pictures/wallpapers/ --save
+# exec --no-startup-id sleep 1 && feh --bg-fill /home/vein/Pictures/wallpapers/PINK-FLOYD.png
+exec --no-startup-id /bin/bash ~/set_wallpaper.sh
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -435,7 +441,7 @@ exec --no-startup-id /usr/bin/dunst
 
 # Autostart apps as you like
 #exec --no-startup-id sleep 2 && xfce4-terminal
-exec --no-startup-id sleep 7 && firefox 
+exec --no-startup-id sleep 1 && firefox 
 #exec --no-startup-id sleep 3 && thunar
 
 ###############
@@ -570,6 +576,7 @@ strip_workspace_numbers yes
 #	}
 #}
 
+
 #####################################
 # Application menu handled by rofi: #
 #####################################
@@ -600,3 +607,4 @@ bindsym $mod+t exec --no-startup-id rofi -show window \
 
 bindsym Control+Shift+s exec flameshot gui
 bindsym $mod+e exec --no-startup-id rofi -modi emoji -show emoji
+#exec ~/.config/i3/scripts/clock.sh
